@@ -9,7 +9,7 @@ Projeto front end React + Typescript para gerencimanento de usuários apresentan
  - [Estrutura do Projeto](#estrutura-do-projeto)
  - [Arquitetura](#arquitetura)
  - [Data Flow](#data-flow)
- - [UX (User Experience)](#UX)
+ - [UX (User Experience)](#UX-(User-Experience))
  - [Testes](#testes)
  - [Tech Stack](#tech-stack)
  
