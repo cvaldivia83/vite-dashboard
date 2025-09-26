@@ -9,7 +9,7 @@ Projeto front end React + Typescript para gerencimanento de usuários apresentan
  - [Estrutura do Projeto](#estrutura-do-projeto)
  - [Arquitetura](#arquitetura)
  - [Data Flow](#data-flow)
- - [UX (User Experience)](#UX-(User-Experience))
+ - [UX (User Experience)](#UX)
  - [Testes](#testes)
  - [Tech Stack](#tech-stack)
  
@@ -107,7 +107,7 @@ O componente Dashboard implementa um padrão de data flow top-down seguindo as m
 
 -  **Modal Communication:** Componentes modais recebem dados via props e comunicam ações através de callback functions, mantendo acoplamento baixo.
 
- ## UX (User Experience )
+ ## UX
  O projeto implementa uma série de elementos visuais e interativos para fornecer feedback imediato ao usuário durante todas as operações CRUD, garantindo uma experiência fluida e intuitiva.
 
  ### Feedback Visual Imediato
