@@ -9,16 +9,5 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false
   }
-  // "compilerOptions": {
-  //   "target": "ESNext",
-  //   "strict": true,
-  //   "sourceMap": true,
-  //   "allowJs": true,
-  //   "removeComments": true,
-  //   "noImplicitReturns": true,
-  //   "outDir": "dist", 
-  //   "composite": true
-  // },
-  // "exclude": ["node_modules"]
 }
 

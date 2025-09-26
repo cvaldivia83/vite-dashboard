@@ -5,14 +5,16 @@ import {describe, it, expect, vi } from 'vitest';
 import Header from '../../components/Header';
 
 describe('Header', () => {
+  const mockSetActiveModal = vi.fn();
+  
   it('renders title correctly', () => {
-    render(<Header />)
+    render(<Header setActiveModal={mockSetActiveModal} />)
 
     expect(screen.getByRole('heading', { name: /BTC Carteiras/i })).toBeInTheDocument();
   })
 
   it('renders button with the correct text', () => {
-    render(<Header />)
+    render(<Header setActiveModal={mockSetActiveModal} />)
 
     expect(screen.getByRole('button', { name: /Adicionar carteira/i })).toBeInTheDocument();
   })

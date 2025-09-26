@@ -30,7 +30,7 @@ describe('Currency Service', () => {
     // @ts-expect-error(500)
     fetch.mockResolvedValueOnce({ json: () => Promise.resolve(mockCurrency)});
 
-    const result = await CurrencyService.getCurrencyConversion('BRL');
+    const result = await CurrencyService.getCurrencyConversion();
 
     expect(fetch).toHaveBeenCalledWith(`https://economia.awesomeapi.com.br/json/last/BTC-BRL?token=${import.meta.env.VITE_AWESOME_API_KEY}`)
     expect(result).toEqual(mockCurrency);

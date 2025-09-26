@@ -1,4 +1,4 @@
-import { describe, it , expect, vi, beforeEach, beforeAll } from 'vitest';
+import { vi, describe, it, expect, beforeEach, beforeAll, Mock } from 'vitest';
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Dashboard from '../../pages/Dashboard';
@@ -30,7 +30,7 @@ describe('Dashboard', () => {
   });
 
   it('renders a users table after fetch from API', async () => {
-    (UsersService.getUsers as vi.Mock).mockResolvedValueOnce(mockUsers);
+    (UsersService.getUsers as Mock).mockResolvedValueOnce(mockUsers);
 
     render(<Dashboard />)
 
@@ -41,22 +41,13 @@ describe('Dashboard', () => {
   });
 
   it('shows success toast when user is added', async () => {
-    (UsersService.getUsers as vi.Mock).mockResolvedValueOnce(mockUsers);
-    (UsersService.createUser as vi.Mock).mockResolvedValueOnce({ ...mockUsers[0], id: "3", nome: "Novo" });
+    (UsersService.getUsers as Mock).mockResolvedValueOnce(mockUsers);
+    (UsersService.createUser as Mock).mockResolvedValueOnce({ ...mockUsers[0], id: "3", nome: "Novo" });
     render(<Dashboard />);
   });
-  //   it('filters users when searching', async () => {
-  //   (UsersService.getUsers as vi.Mock).mockResolvedValueOnce(mockUsers);
-  //   render(<Dashboard />);
-  //   // Simulate search
-  //   const searchInput = screen.getByPlaceholderText(/nome/i);
-  //   fireEvent.change(searchInput, { target: { value: 'Alice' } });
-  //   await waitFor(() => expect(screen.getByText('Alice')).toBeInTheDocument());
-  //   expect(screen.queryByText('Michel')).not.toBeInTheDocument();
-  // });
 
   it('opens and closes AddModal', async () => {
-    (UsersService.getUsers as vi.Mock).mockResolvedValueOnce(mockUsers);
+    (UsersService.getUsers as Mock).mockResolvedValueOnce(mockUsers);
     render(<Dashboard />);
     // Open modal
 

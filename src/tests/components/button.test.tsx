@@ -5,14 +5,15 @@ import Button from '../../components/Button';
 import { describe, expect, it, vi } from 'vitest';
 
 describe('Button component', () => {
+  
   it('renders with the correct text', () => {
-    render(<Button size="base" background="azul" color="branco" border text='Adicionar' onClick={() => {}} />)
+    render(<Button size="base" background="azul" color="branco" border text='Adicionar' onClick={() => {}} type="submit" />)
 
     expect(screen.getByRole('button', { name: /adicionar/i })).toBeInTheDocument();
   })
 
   it('applies correct classes from props', () => {
-    render(<Button text='Clique' background="azul" color="branco" size="base" border={true} onClick={() => {}} />)
+    render(<Button text='Clique' background="azul" color="branco" size="base" border={true} onClick={() => {}} type="submit" />)
 
     const button = screen.getByRole('button', { name: /clique/i })
 
@@ -23,7 +24,7 @@ describe('Button component', () => {
   })
 
   it('does not have border class when border is false', () => {
-    render(<Button text='Clique' background="azul" color="branco" size="base" border={false} onClick={() => {}} />);
+    render(<Button text='Clique' background="azul" color="branco" size="base" border={false} onClick={() => {}} type="submit" />);
 
     const button = screen.getByRole('button', { name: /clique/i });
 
@@ -34,7 +35,7 @@ describe('Button component', () => {
     const user = userEvent.setup();
     const handleClick = vi.fn();
 
-    render(<Button text='Adicionar Carteira' background="azul" color="branco" size="base" border={false} onClick={handleClick} />)
+    render(<Button text='Adicionar Carteira' background="azul" color="branco" size="base" border={false} onClick={handleClick} type="submit" />)
 
     await user.click(screen.getByRole('button', { name: /Adicionar Carteira/i }))
     expect(handleClick).toHaveBeenCalled();
