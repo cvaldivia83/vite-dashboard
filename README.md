@@ -17,7 +17,7 @@ Projeto front end React + Typescript para gerencimanento de usuários apresentan
  
  1. **Clone o repositório:**
    ```sh
-   git clone <your-repo-url>
+   git@github.com:cvaldivia83/vite-dashboard.git
    cd desafio-cvaldivia
    ```
  2. **Instale as dependências:**
@@ -147,8 +147,8 @@ O objetivo desta abordagem UX é:
  
  ## Testes
  
- - Tests are located in `src/tests` and organized by feature/component.
- - Run tests with:
+ - Testes estão localizados em `src/tests` e estão organizados por feature/componente.
+ - Rode testes com:
   ```sh
   npm run test
   ```
