@@ -1,0 +1,10 @@
+{
+  "/api/*": "/$1",
+  "/users?:email" : "/users/email=:email",
+  "/users?:nome": "/users?nome=:nome",
+  "/users?:sobrenome": "/users?sobrenome=:sobrenome",
+  "/users?:nome&:sobrenome": "/users?nome=:nome&sobrenome=:sobrenome",
+  "/users?:nome&:email": "/users?nome=:nome&email=:email",
+  "/users?:sobrenome&:email": "/users?sobrenome=:sobrenome&email=:email",
+  "/users?:email&:nome&:sobrenome": "/users/email=:email/nome=:nome/sobrenome:sobrenome"
+}
