@@ -1,4 +1,4 @@
-import { vi, describe, it, expect } from 'vitest';
+import { vi, describe, it, expect, Mock } from 'vitest';
 import Dashboard from '../../pages/Dashboard';
 import '@testing-library/jest-dom';
 import { render, screen, waitFor } from '@testing-library/react';
@@ -14,7 +14,7 @@ const mockUsers = [
 describe('Pagination', () => {
   it('changes page when pagination button is clicked', async () => {
     
-    (UsersService.getUsers as vi.Mock).mockResolvedValueOnce(mockUsers);
+    (UsersService.getUsers as Mock).mockResolvedValueOnce(mockUsers);
     render(<Dashboard />);
 
     await waitFor(() => {
