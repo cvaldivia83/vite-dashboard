@@ -79,6 +79,9 @@ body {
     @apply mx-1
   }
 
+  .navbar-logo {
+    @apply w-10 h-10;
+  }
   /* header component */
 
   .header {

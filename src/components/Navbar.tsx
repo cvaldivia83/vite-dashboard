@@ -4,11 +4,13 @@
 import { ReactComponent as Logo } from '../assets/logo.svg';
 import { ReactComponent as Action } from '../assets/icon_action.svg';
 import { ReactComponent as Avatar } from '../assets/avatar.svg';
+import { ReactComponent as LogoSimple} from '../assets/logo_generic.svg'
 
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <Logo className='navbar-logo' aria-hidden="true" />
+      
+      <LogoSimple className="navbar-logo" aria-hidden="true" />
       <div className="navbar-user">
         <Avatar className="navbar-item" />
         <small className="navbar-item">Antonio Oliveira</small>
