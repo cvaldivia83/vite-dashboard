@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <footer className="footer">
-      Fintools | Desafio Front-End
+      BTC Tools | Front End Challenge
     </footer>
   )
 }
