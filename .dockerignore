@@ -11,7 +11,8 @@ dist
 .gitignore
 
 # README
-README.md
+README.pt.md
+README.en.md
 
 Dockerfile
 docker-compose.yml
