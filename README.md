@@ -1,167 +1,185 @@
- 
- # Desafio Frontend
- 
-Projeto front end React + Typescript para gerencimanento de usuários apresentando arquitetura modular, integração de uma de API local para desenvolvimento.
- 
- ## Índex
- - [Setup](#setup)
- - [Uso](#uso)
- - [Estrutura do Projeto](#estrutura-do-projeto)
- - [Arquitetura](#arquitetura)
- - [Data Flow](#data-flow)
- - [UX (User Experience)](#UX)
- - [Testes](#testes)
- - [Tech Stack](#tech-stack)
- 
- ## Setup
- 
- 1. **Clone o repositório:**
-   ```sh
-   git@github.com:cvaldivia83/vite-dashboard.git
-   cd desafio-cvaldivia
-   ```
- 2. **Instale as dependências:**
-   ```sh
-   npm install
-   ```
- 3. **Inicie o servidor:**
-   ```sh
-   npm run dev
-   ```
- 
- ## Uso
- 
-- Acesse o app na url 'http://localhost:5173' (endereço padrão do Vite).
+[🇧🇷 Versão em Português](README.pt-BR.md)
 
-- Use o dashboard para visualizar, adicionar, editar e deletar usuários.
-
-- O app interage com a simulação local de uma API (`/api/db.json`).
-
-- Todas as modificações se refletem na UI e persistidas na base de ados simulada.
-
- ## Estrutura do Projeto
+# Frontend Challenge
  
+Frontend project using React + TypeScript for user management, featuring modular architecture and local API integration for development.
+ 
+## Index
+- [Setup](#setup)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Architecture](#architecture)
+- [Data Flow](#data-flow)
+- [UX (User Experience)](#ux)
+- [Tests](#tests)
+- [Tech Stack](#tech-stack)
+
+## Setup
+
+  ### Docker
+
+  If you have Docker installed on your computer, you can run this application using our Docker image.
+
+  1. **Pull the docker image:**
+  ```sh
+  docker pull queeniec/vite_dashboard
+  ```
+
+  2. **Run the container:**
+  ```sh
+  docker run -p 5173:5173 queeniec/vite_dashboard
+  ```
+
+  3. **Access the application:**
+
+  Open your browser and navigate to http://localhost:5173
+
+  4. **To stop the container:**
+  ```sh
+  docker stop vite_dashboard
+  ```
+
+  ### Github
+
+  If you don't have Docker, you can download the repository through the following steps:
+
+  1. **Clone the repository:**
+  ```sh
+  git@github.com:cvaldivia83/vite-dashboard.git
+  cd desafio-cvaldivia
+  ```
+
+  2. **Install dependencies:**
+  ```sh
+  npm install
+  ```
+
+  3. **Start the server:**
+  ```sh
+  npm run dev
+  ```
+
+## Usage
+
+- Access the app at 'http://localhost:5173' (Vite's default address).
+- Use the dashboard to view, add, edit, and delete users.
+- The app interacts with a local API simulation (/api/db.json).
+- All modifications are reflected in the UI and persisted in the simulated database.
+
+## Project Structure
+
  ```
- ├── api/                # Mock API e rotas
+ ├── api/                # Mock API and routes
  ├── public/             # Static assets
  ├── src/
  │   ├── assets/         # SVGs e imagens
- │   ├── components/     # Componentes UI
+ │   ├── components/     # UI components
  │   ├── hooks/          # Custom hooks
  │   ├── pages/          # Views
- │   ├── services/       # Lógica API
+ │   ├── services/       # API logic
  │   ├── styles/         # CSS
- │   ├── tests/          # Testes unitários
+ │   ├── tests/          # Unit tests
  │   └── types/          # TypeScript types
  ├── Dockerfile          # Container setup
- ├── package.json        # Scripts e metadados
- ├── vite.config.ts      # Configuração Vite
- └── README.md           # Documentação
+ ├── package.json        # Scripts and metadata
+ ├── vite.config.ts      # Vite configuration
+ └── README.md           # Documentation
  ```
- 
- ## Arquitetura
- 
-O componente Dashboard funciona como um hub central para gerenciamento de dados, concentrando todas as operações CRUD de usuários e carteiras (criação, edição e exclusão).
 
-Esta abordagem oferece diversos benefícios:
+## Architecture 
 
-1.  **Single Source of Truth:** O estado users no Dashboard garante que todos os componentes filhos trabalhem com a mesma versão dos dados, eliminando inconsistências.
+The Dashboard component functions as a central hub for data management, concentrating all CRUD operations for users and wallets (creation, editing, and deletion).
 
-2.  **Gerenciamento centralizado**: Todas as chamadas à mock API e atualizações de estado ficam em um local controlado, facilitando manutenção e debugging.
+This approach offers several benefits:
 
-3.  **Fluxo de dados unidirecional:** As props são passadas para baixo e os callbacks sobem, seguindo o padrão React recomendado.
+1.  **Single Source of Truth:** The users state in Dashboard ensures that all child components work with the same version of data, eliminating inconsistencies.
 
-4.  **TDD facilitado:** Lógica de negócio concentrada permite testes unitários mais efetivos do componente principal.
+2.  **Centralized Management:** All mock API calls and state updates are in a controlled location, facilitating maintenance and debugging.
 
-O objetivo principal para esta escolha era evitar prop drilling excessivo, manter a simplicidade sem introduzir complexidade desnecessária de gerenciadores de estado externos para um escopo pequeno.
+3.  **Unidirectional data flow:** Props are passed down and callbacks go up, following the recommended React pattern.
 
--  **Components:** Elementos UI reutilizáveis localizados em `src/components`. Modals estão agrupados em `src/components/Modal`, e Toasts estão agrupados em `src/components/Toast`.
+4.  **TDD facilitado:** Concentrated business logic allows more effective unit testing of the main component. 
 
--  **Pages:** Páginas principais localizadas em `src/pages` (ex: `Dashboard`).
+The main objective for this choice was to avoid excessive prop drilling and maintain simplicity without introducing unnecessary complexity from external state managers for a small scope.
 
--  **Hooks:** Hooks personalizados localizados em `src/hooks` (e.g., `useForm`).
+-  **Components:** Reusable UI elements located in `src/components`. Modals are grouped in `src/components/Modal`, and Toasts are grouped in `src/components/Toast`.
 
--  **Services:** Lógica de requisição de dados da API de usuários e da API de câmbio monetário está localizada em `src/services` (e.g., `users.ts`).
+-  **Pages:** Main page is located in `src/pages` (e.g.: `Dashboard`).
+
+-  **Hooks:** Custom hooks located in `src/hooks` (e.g., `useForm`).
+
+-  **Services:** Request logic for user API data and currency exchange API is located in `src/services` (e.g., `users.ts`).
 
 -  **Types:** TypeScript type definitions in `src/types`.
 
--  **Styles:** Estilos globais e estilos de componentes em `src/styles`.
+-  **Styles:** Global styles in `src/styles`.
 
--  **Tests:** Testes unitários em `src/tests`.
+-  **Tests:** Unit tests in `src/tests`.
 
--  **API:** Dados Locais e rotas personalizadas em `api/db.json` e `api/routes.json`.
- 
- ### Data Flow
+-  **API:** Local data and custom routes in `api/db.json` e `api/routes.json`.
 
-O componente Dashboard implementa um padrão de data flow top-down seguindo as melhoes práticas do React:
+## Data Flow
+
+The Dashboard component implements a top-down data flow pattern following React best practices:
 
 > UI events -> State Updates -> API Calls -> Component Re-render
 
--  **State Management:** Estados são gerenciados centralmente no componente `Dashboard`, funcionando como single source of truth para dados de usuários e carteiras.
+-  **State Management:**  States are centrally managed in the `Dashboard` component, functioning as a single source of truth for user and wallet data.
 
--  **Event Handling:** Interações do usuário (criar/editar/deletar) disparam callbacks que propagam até o componente pai via props.
+-  **Event Handling:**  User interactions (create/edit/delete) trigger callbacks that propagate to the parent component via props.
 
--  **API Integration:** Operações assíncronas são executadas através de funções de serviço dedicadas, mantendo separação de responsabilidades.
+-  **API Integration:** Asynchronous operations are executed through dedicated service functions, maintaining separation of concerns.
 
--  **UI Synchronization:** Após cada operação CRUD bem-sucedida, o estado local é atualizado, provocando re-render automático da interface.
+-  **UI Synchronization:** After each successful CRUD operation, the local state is updated, triggering automatic interface re-render.
 
--  **Modal Communication:** Componentes modais recebem dados via props e comunicam ações através de callback functions, mantendo acoplamento baixo.
+-  **Modal Communication:** Modal components receive data via props and communicate actions through callback functions, maintaining low coupling.
 
- ## UX
- O projeto implementa uma série de elementos visuais e interativos para fornecer feedback imediato ao usuário durante todas as operações CRUD, garantindo uma experiência fluida e intuitiva.
+## UX
 
- ### Feedback Visual Imediato
+The project implements a series of visual and interactive elements to provide immediate feedback to the user during all CRUD operations, ensuring a fluid and intuitive experience.
 
- **1. Criação de Usuários**
+### Immediate Visual Feedback
 
- - Após adicionar uma nova carteira com sucesso, a tabela é automaticamente atualizada.
+**1. User Creation**
 
- - A nova carteira aparece no topo da lista com background verde claro, destacando a ação recém-realizada.
+- After successfully adding a new wallet, the table is automatically updated.
+- The new wallet appears at the top of the list with a light green background, highlighting the recently performed action.
+- This approach eliminates the need for users to search for the created record in the list.
 
- - Esta abordagem elimina a necessidade do usuário procurar pelo registro criado na lista.
+**2. Form Validation**
 
- **2. Validação de Formulários**
+- Implementation of the useForm custom hook for real-time validation of entered data.
+- Instant feedback in the form itself when invalid data is detected.
+- Specific error messages guide the user on how to correct each field.
+- Prevention of form submission with inconsistent data.
 
- - Implementação do custom hook `useForm` para validação em tempo real dos dados inseridos.
+**3. Toast Notification System**
 
- - Feedback instantâneo no próprio formulário quando dados inválidos são detectados.
+- **Successfull operations:** Green Toast with a message confirming the action was performed.
+- **Failed operations:** Red Toast informing that the action could not be completed.
 
- - Mensagens de erro específicas orientam o usuário sobre como corrigir cada campo.
+The objective of this UX approach is:
 
- - Prevenção de submissão de formulários com dados inconsistentes. 
+- Provide clear feedback on operation status
+- Avoid submission of incorrect data through preventive verification.
+- Facilitate identification of recent changes through visual highlighting.
 
- **3. Sistema de Notificações Toast** 
+## Tests
 
- - **Operações bem-sucedidas**: Toast verde com mensagem confirmando que a ação foi realizada.
+Tests are located in `src/tests` and are organized by feature/component.
 
- - **Operações com erro**: Toast vermelho informando que a ação não pode ser completada.
+Run tests with:
 
-O objetivo desta abordagem UX é: 
+```sh
+npm run test 
+```
 
-- Fornecer feedback claro sobre o status das operações
+## Tech Stack
 
-- Evitar a submissão de dados incorretos através de uma verificação preventiva. 
-
-- Facilitar a identificação de alterações recentes através de destacamento visual.
-
- 
- ## Testes
- 
- - Testes estão localizados em `src/tests` e estão organizados por feature/componente.
- - Rode testes com:
-  ```sh
-  npm run test
-  ```
- 
- ## Tech Stack
- - React
- - TypeScript
- - Vite
- - CSS
- - json-server (for mock API)
- - Tailwind CSS
- - Docker
- 
- ---
-
-
+- React
+- TypeScript
+- Vite
+- CSS
+- json-server (for mock API)
+- Tailwind CSS
+- Docker
